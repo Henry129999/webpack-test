@@ -8,6 +8,7 @@ import 'moment/locale/zh-cn';
 import 'antd/dist/antd.css';
 import { Link } from 'react-router-dom';
 import styles from './Main.css';
+import { nameHHHH } from '../help/common';
 
 const { Option } = Select;
 
@@ -49,7 +50,6 @@ class Main extends Component {
     const { visible } = this.state;
 
     console.log('process.env.NODE_ENV', process.env.NODE_ENV);
-    console.log('', 111);
     if(process.env.NODE_ENV === 'production') console.log('true');
 
     return (
@@ -84,6 +84,8 @@ class Main extends Component {
           >
             <p>这是一个弹窗</p>
           </Modal>
+          <img src='../../images/tags.png' alt="" />
+          {nameHHHH.map((item, index) => <p key={index}>{item}</p>)}
         </div>
       </LocaleProvider>
     );
