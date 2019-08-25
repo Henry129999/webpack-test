@@ -28,15 +28,15 @@ module.exports = {
   },
   resolve: { // 优化文件搜索配置
     modules: [path.resolve(__dirname, 'node_modules')],
-    alias: { // 定义好文件的搜索路径
-      'react': path.resolve(__dirname, './node_modules/react/umd/react.production.min.js'),
-      'react-dom': path.resolve(__dirname, './node_modules/react-dom/umd/react-dom.production.min.js'),
-    },
+    // alias: { // 定义好文件的搜索路径
+    //   'react': path.resolve(__dirname, './node_modules/react/umd/react.production.min.js'),
+    //   'react-dom': path.resolve(__dirname, './node_modules/react-dom/umd/react-dom.production.min.js'),
+    // },
     extensions: ['.jsx', '.js', '.css', '.less', '.sass', '.json', '.png', 'html'],
   },
   module: {
     // 独完整的 `react.min.js` 文件就没有采用模块化，忽略对 `react.min.js` 文件的递归解析处理
-    noParse: [/react\.min\.js$/, /react-dom\.min\.js$/,],
+    // noParse: [/react\.min\.js$/, /react-dom\.min\.js$/,],
     rules: [
       // {
       //   test: /\.jsx$/,
@@ -70,7 +70,13 @@ module.exports = {
       {
         test: /\.jsx$/,
         exclude: /node_modules/,
-        use: ['babel-loader?cacheDirectory']
+        use: [{
+          loader: 'babel-loader',
+          options: {
+            cacheDirectory: true,
+            plugins: ['react-hot-loader/babel'],
+          }
+        }]
       },
       {
         // 用正则去匹配要用该 loader
@@ -108,10 +114,9 @@ module.exports = {
       }
     ]
   },
-  // devServer: {
-  //   contentBase: './dist',
-  //   hot: true
-  // },
+  devServer: {
+    hot: true
+  },
   // optimization: {
   //   minimizer: [
   //     new UglifyJsPlugin({

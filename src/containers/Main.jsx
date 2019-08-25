@@ -9,6 +9,7 @@ import 'antd/dist/antd.css';
 import { Link } from 'react-router-dom';
 import styles from './Main.css';
 import { nameHHHH } from '../help/common';
+import Body from "./Body";
 
 import MainSub from './MainSub';
 
@@ -91,7 +92,7 @@ class Main extends Component {
             onCancel={this.handleModalVisible}
             visible={visible}
             footer={[
-              <Button onClick={this.handleModalVisible}>取消</Button>,
+              <Button onClick={this.handleModalVisible}>取消q1</Button>,
               <Button onClick={this.handleModalVisible}>确定</Button>
             ]}
           >
@@ -100,6 +101,8 @@ class Main extends Component {
           <img src='../../images/tags.png' alt="" />
           {nameHHHH.map((item, index) => <p key={index}>{item}</p>)}
           <MainSub />
+
+          <Body />
         </div>
       </LocaleProvider>
     );

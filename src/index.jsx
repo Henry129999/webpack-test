@@ -1,3 +1,4 @@
+import { AppContainer } from 'react-hot-loader'; //设置这里
 import ReactDOM from "react-dom";
 import * as React from "react";
 import Routers from './routers.jsx';
@@ -27,19 +28,15 @@ class ErrorBoundary extends React.Component {
   }
 }
 
-const App = () => (
-  <div>
-    <Routers />
-  </div>
-);
-
-
-ReactDOM.render(<ErrorBoundary><App /></ErrorBoundary>, document.getElementById('app'));
-
+// 知会 webpack 允许此模块的热更新
 if (module.hot) {
-  console.log('module.hot', module.hot);
-  module.hot.accept();
+  module.hot.accept('./routers', () => {
+    ReactDOM.render(<AppContainer><ErrorBoundary><Routers /></ErrorBoundary></AppContainer>, document.getElementById('app'));
+  })
 }
+
+
+ReactDOM.render(<AppContainer><ErrorBoundary><Routers /></ErrorBoundary></AppContainer>, document.getElementById('app'));
 
 // if (module.hot) { module.hot.accept('./routers', () => {
 //   Routers = require('./routers'); // do it by yourself.

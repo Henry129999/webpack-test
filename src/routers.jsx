@@ -1,6 +1,7 @@
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import { createBrowserHistory as createHistory } from "history";
 
+
 import Main from './containers/Main.jsx';
 import Footer from './containers/Footer.jsx';
 import Test_page from './containers/Test_page.jsx';
@@ -16,4 +17,4 @@ export default function Routers() {
       </Switch>
     </Router>
   );
-};
+}
