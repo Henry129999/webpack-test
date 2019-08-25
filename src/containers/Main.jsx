@@ -10,6 +10,8 @@ import { Link } from 'react-router-dom';
 import styles from './Main.css';
 import { nameHHHH } from '../help/common';
 
+import MainSub from './MainSub';
+
 const { Option } = Select;
 
 const textArr = [
@@ -32,6 +34,7 @@ class Main extends Component {
 
   state = {
     visible: false,
+    count: 1,
   };
 
   handleLinkTo = (url) => {
@@ -45,9 +48,17 @@ class Main extends Component {
     }))
   };
 
+  handlePlus = () => {
+    this.setState((pre) => (
+      {
+        count: pre.count + 1,
+      }
+    ))
+  };
+
   render() {
     console.log('state', this.state);
-    const { visible } = this.state;
+    const { visible, count } = this.state;
 
     console.log('process.env.NODE_ENV', process.env.NODE_ENV);
     if(process.env.NODE_ENV === 'production') console.log('true');
@@ -71,8 +82,10 @@ class Main extends Component {
             <Option value="tom">Tom1</Option>
           </Select>
           <div><Link to="/footer">About</Link></div>
-          <Button onClick={this.handleModalVisible}>打开弹窗33111</Button>
+          <Button onClick={this.handleModalVisible}>打开弹窗</Button>
           <Button onClick={() => this.handleLinkTo('./test_page')}>进入test页面</Button>
+          <div>count = { count }</div>
+          <Button onClick={this.handlePlus}>PLUS</Button>
           <Modal
             title="弹窗"
             onCancel={this.handleModalVisible}
@@ -86,6 +99,7 @@ class Main extends Component {
           </Modal>
           <img src='../../images/tags.png' alt="" />
           {nameHHHH.map((item, index) => <p key={index}>{item}</p>)}
+          <MainSub />
         </div>
       </LocaleProvider>
     );

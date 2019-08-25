@@ -20,7 +20,7 @@ class ErrorBoundary extends React.Component {
   }
   render() {
     if (this.state.hasError) {
-      return null;t
+      return null;
       // Note: 也可以在出错的component处展示出错信息，返回自定义的结果。
     }
     return this.props.children;
@@ -37,5 +37,11 @@ const App = () => (
 ReactDOM.render(<ErrorBoundary><App /></ErrorBoundary>, document.getElementById('app'));
 
 if (module.hot) {
+  console.log('module.hot', module.hot);
   module.hot.accept();
 }
+
+// if (module.hot) { module.hot.accept('./routers', () => {
+//   Routers = require('./routers'); // do it by yourself.
+//   render(Routers);
+// }); }

@@ -18,7 +18,7 @@ module.exports = {
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   // JavaScript 执行入口文件
   entry: {
-    index: './src/index.jsx',
+    index: ['webpack-hot-middleware/client?reload=true', path.resolve(__dirname, 'src/index.jsx')],
   },
   output: {
     // 把所有依赖的模块合并输出到一个 bundle.js 文件
@@ -129,7 +129,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development'), // 使用JSON.stringify的结果为'"production"'
     }),
-    // new webpack.HotModuleReplacementPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
     // new WebPlugin({  // Also generate a test.html
     //   filename: 'test.html',
     //   template: 'template.html',
@@ -143,7 +143,6 @@ module.exports = {
     //   title:'webpack test',
     //   chunks:['index']
     // }),
-    new webpack.HotModuleReplacementPlugin(),
     // 使用 ParallelUglifyPlugin 并行压缩输出的 JS 代码
     // new ParallelUglifyPlugin({
     //   // 传递给 UglifyJS 的参数

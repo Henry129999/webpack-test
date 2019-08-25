@@ -7,7 +7,6 @@ import Test_page from './containers/Test_page.jsx';
 import React from "react";
 
 export default function Routers() {
-  console.log('createBrowserHistory', createHistory);
   return (
     <Router>
       <Switch>
