@@ -57,6 +57,11 @@ class Main extends Component {
     ))
   };
 
+  handleAsyncComponent = (url) => {
+    const { history } = this.props;
+    history.push(url);
+  }
+
   render() {
     console.log('state', this.state);
     const { visible, count } = this.state;
@@ -103,6 +108,9 @@ class Main extends Component {
           <MainSub />
 
           <Body />
+
+          <Button onClick={() => this.handleAsyncComponent('./about')}>异步加载组件About</Button>
+          <Button onClick={() => this.handleAsyncComponent('./check')}>异步加载组件Check</Button>
         </div>
       </LocaleProvider>
     );
