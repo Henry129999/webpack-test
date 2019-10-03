@@ -3,15 +3,15 @@ import React, { Component } from "react";
 export default class ImgLazyLoad extends Component{
   componentDidMount() {
     let img = document.getElementsByTagName('img');
+    let n = 0; //存储图片加载到的位置，避免每次都从第一张图片开始遍历
     window.onscroll = () => {
-      this.onLazyLoad(img);
+      this.onLazyLoad(img, n);
     };
   }
 
-  onLazyLoad = (img) => {
+  onLazyLoad = (img, n) => {
     let seeHeight = document.documentElement.clientHeight; //可见区域高度
     let scrollTop = document.documentElement.scrollTop || document.body.scrollTop; //滚动条距离顶部高度
-    let n = 0; //存储图片加载到的位置，避免每次都从第一张图片开始遍历
 
     for (let i = n; i < img.length; i++) {
       if (img[i].offsetTop < seeHeight + scrollTop) {
