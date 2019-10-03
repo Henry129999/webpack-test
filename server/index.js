@@ -30,7 +30,7 @@ console.log('process.env.NODE_ENV', process.env.NODE_ENV);
 const app =server();
 
 // 为express添加动态模块热更新
-const port = (process.env.PORT || 8080);
+const port = (process.env.PORT || 8000);
 if (process.env.NODE_ENV !== 'production') {
   const webpack = require('webpack');
   const webpackDevMiddleware = require('webpack-dev-middleware');

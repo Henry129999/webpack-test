@@ -13,11 +13,11 @@ class ErrorBoundary extends React.Component {
   componentDidCatch(error, info) {
     this.setState({ hasError: true });
     // 将component中的报错发送到Fundebug &&
-    fundebug.notifyError(error, {
-      metaData: {
-        info: info
-      }
-    });
+    // fundebug.notifyError(error, {
+    //   metaData: {
+    //     info: info
+    //   }
+    // });
   }
   render() {
     if (this.state.hasError) {
@@ -32,7 +32,7 @@ class ErrorBoundary extends React.Component {
 if (module.hot) {
   module.hot.accept('./routers', () => {
     ReactDOM.render(<AppContainer><ErrorBoundary><Routers /></ErrorBoundary></AppContainer>, document.getElementById('app'));
-  })
+  });
 }
 
 

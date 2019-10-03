@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import styles from './Main.css';
 import { nameHHHH } from '../help/common';
 import Body from "./Body";
+import ImgLazyLoad from './ImgLazyLoad';
 
 import MainSub from './MainSub';
 
@@ -60,7 +61,7 @@ class Main extends Component {
   handleAsyncComponent = (url) => {
     const { history } = this.props;
     history.push(url);
-  }
+  };
 
   render() {
     console.log('state', this.state);
@@ -111,6 +112,8 @@ class Main extends Component {
 
           <Button onClick={() => this.handleAsyncComponent('./about')}>异步加载组件About</Button>
           <Button onClick={() => this.handleAsyncComponent('./check')}>异步加载组件Check</Button>
+
+          <ImgLazyLoad />
         </div>
       </LocaleProvider>
     );

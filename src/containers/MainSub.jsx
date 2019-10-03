@@ -5,6 +5,6 @@ export default class MainSub extends Component {
   render() {
     return (
       <div>222222333ssaaa</div>
-    )
+    );
   }
 }
