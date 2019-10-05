@@ -4,14 +4,14 @@ import { Modal, Button } from 'antd';
 
 export default class Body extends Component {
   state = {
-    visible: true,
-  }
+    visible: false,
+  };
 
   handleModalVisible = () => {
     this.setState(pre => ({
       visible: !pre.visible,
-    }))
-  }
+    }));
+  };
 
   render() {
     const { visible } = this.state;
@@ -27,6 +27,6 @@ export default class Body extends Component {
           这是一个弹窗111133222
         </Modal>
       </div>
-    )
+    );
   }
 }

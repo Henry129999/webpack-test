@@ -47,7 +47,7 @@ class Main extends Component {
   handleModalVisible = () => {
     this.setState(pre => ({
       visible: !pre.visible
-    }))
+    }));
   };
 
   handlePlus = () => {
@@ -55,7 +55,7 @@ class Main extends Component {
       {
         count: pre.count + 1,
       }
-    ))
+    ));
   };
 
   handleAsyncComponent = (url) => {
@@ -67,12 +67,18 @@ class Main extends Component {
     console.log('state', this.state);
     const { visible, count } = this.state;
 
+    console.log('visible', visible);
+
     console.log('process.env.NODE_ENV', process.env.NODE_ENV);
     if(process.env.NODE_ENV === 'production') console.log('true');
 
     return (
       <LocaleProvider locale={zhCN}>
         <div className={styles.content}>
+          <div className={styles.test}>
+            <div>动画</div>
+            <div className={styles.animation}>hkausdhfuh</div>
+          </div>
           <h1>
             1111222444555
             {textArr.map((res, index) =>
@@ -80,6 +86,8 @@ class Main extends Component {
             )}
           </h1>
           <Button type="primary" onClick={() => this.handleLinkTo('./footer')}>点击加一</Button>
+          <em>em 斜体</em>
+          <i>i标签</i>
           <Select
             style={{ width: '120px', marginLeft: '8px' }}
             placeholder="请输入..."
@@ -98,8 +106,8 @@ class Main extends Component {
             onCancel={this.handleModalVisible}
             visible={visible}
             footer={[
-              <Button onClick={this.handleModalVisible}>取消q1</Button>,
-              <Button onClick={this.handleModalVisible}>确定</Button>
+              <Button key="cancel" onClick={this.handleModalVisible}>取消q1</Button>,
+              <Button key="certain" onClick={this.handleModalVisible}>确定</Button>
             ]}
           >
             <p>这是一个弹窗</p>
@@ -114,6 +122,10 @@ class Main extends Component {
           <Button onClick={() => this.handleAsyncComponent('./check')}>异步加载组件Check</Button>
 
           <ImgLazyLoad />
+
+          <div style={{ height: '50px', verticalAlign: 'middle' }}>
+            <p style={{ lineHeight: '50px', verticalAlign: 'middle' }}>行高</p>
+          </div>
         </div>
       </LocaleProvider>
     );

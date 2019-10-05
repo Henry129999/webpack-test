@@ -87,7 +87,13 @@ module.exports = {
           use: [
             {
               loader: 'css-loader', // 使用['css-loader?minimize']进行代码的压缩
-              options: {sourceMap: true}
+              options: {
+                sourceMap: true,
+                modules: true,
+                modules: {
+                  localIdentName: "[name]__[local]___[hash:base64:5]",
+                },
+              }
             },
             "postcss-loader"
           ],
@@ -107,7 +113,9 @@ module.exports = {
           use: [
             {
               loader: 'css-loader',
-              options: {sourceMap: true}
+              options: {
+                sourceMap: true,
+              }
             },
           ],
         }),
@@ -125,7 +133,7 @@ module.exports = {
   //   ],
   // },
   plugins: [
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     new ExtractTextPlugin({
       // 从.js中提取出来的.css的文件名称
       filename: 'styles.css'

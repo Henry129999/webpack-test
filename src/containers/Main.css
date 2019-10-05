@@ -1,8 +1,33 @@
 #app{
-    text-align: center;
-    color: red;
-    font-size: 24px;
+  text-align: center;
+  color: red;
+  font-size: 24px;
 }
 .content {
-    background-color: #bebebe;
+  background-color: #FFFFFF;
+}
+.test {
+  height: 300px;
+  width: 300px;
+}
+.animation {
+  width: 40px;
+  height: 40px;
+  border-radius: 20%;
+  background: #0ff;
+  animation: move 2s linear 3 alternate both;
+}
+@keyframes move{
+  0%{
+    transform: translate(0,0);
+  }
+  33%{
+    transform: translate(200px,0);
+  }
+  66%{
+    transform: translate(0,0);
+  }
+  100%{
+    transform: translate(200px,0);
+  }
 }

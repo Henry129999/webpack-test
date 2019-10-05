@@ -7,6 +7,14 @@ export default class ImgLazyLoad extends Component{
     window.onscroll = () => {
       this.onLazyLoad(img, n);
     };
+    window.onload = () => {
+      this.onLazyLoad(img, n);
+    };
+
+    let div1 = document.getElementById('#div');
+    div1.addEventListener('click', (e) => {
+      console.log('e', e.target.nodeName);
+    });
   }
 
   onLazyLoad = (img, n) => {
@@ -25,7 +33,7 @@ export default class ImgLazyLoad extends Component{
 
   render() {
     return(
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <div id="#div" style={{ display: 'flex', flexDirection: 'column' }}>
         <img src="../../images/tags.png" data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1570101837932&di=b65178c0ec47d1f760011988fd78cd47&imgtype=0&src=http%3A%2F%2Fn.sinaimg.cn%2Fsinacn14%2F30%2Fw1080h1350%2F20180826%2Fcb89-hifuvph0451800.jpg" alt=""/>
         <img src="../../images/tags.png" data-src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1589737666,2266409315&fm=26&gp=0.jpg" alt=""/>
         <img src="../../images/tags.png" data-src="http://img.tupianzj.com/uploads/190422/30-1Z4221J116440.jpg" alt=""/>
