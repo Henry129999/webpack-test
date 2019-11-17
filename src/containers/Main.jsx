@@ -1,7 +1,6 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { LocaleProvider, Button, Select, Modal } from 'antd';
-import { Component } from 'react';
 import moment from 'moment';
 import zhCN from 'antd/es/locale-provider/zh_CN';
 import 'moment/locale/zh-cn';
@@ -39,6 +38,35 @@ class Main extends Component {
     count: 1,
   };
 
+  componentDidMount = () => {
+    this.handlePopPromiseError();
+    window.onerror = (msg, url, lineNum, colNum, err) => {
+      console.log(`错误发生的异常信息（字符串）:${msg}`);
+      console.log(`错误发生的脚本URL（字符串）:${url}`);
+      console.log(`错误发生的行号（数字）:${lineNum}`);
+      console.log(`错误发生的列号（数字）:${colNum}`);
+      console.log(`错误发生的Error对象（错误对象）:${err}`);
+      return true;
+    };
+    window.addEventListener('unhandledrejection', (e) => {
+      console.log('unhandledrejection', e.reason);
+      console.log('promise error', e.promise);
+      return true;
+    }, true);
+    window.addEventListener('error', (errorEvent) => { // 捕获静态资源error
+      console.log('error', errorEvent);
+      console.log('error', errorEvent.message);
+    }, true);
+  };
+
+  handlePopPromiseError = () => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        reject('这儿有一个错误');
+      }, 1000);
+    });
+  };
+
   handleLinkTo = (url) => {
     const { history } = this.props;
     history.push(url);
@@ -48,6 +76,8 @@ class Main extends Component {
     this.setState(pre => ({
       visible: !pre.visible
     }));
+
+
   };
 
   handlePlus = () => {
@@ -56,6 +86,7 @@ class Main extends Component {
         count: pre.count + 1,
       }
     ));
+    throw '222';
   };
 
   handleAsyncComponent = (url) => {
@@ -76,8 +107,8 @@ class Main extends Component {
       <LocaleProvider locale={zhCN}>
         <div className={styles.content}>
           <div className={styles.test}>
-            <div>动画</div>
-            <div className={styles.animation}>hkausdhfuh</div>
+            <div className={styles.test_left}>动画</div>
+            <div className={styles.test_right}>hkausdhfuh</div>
           </div>
           <h1>
             1111222444555

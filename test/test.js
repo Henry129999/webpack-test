@@ -199,24 +199,24 @@
 //     opearate(array[index], index);
 //   }
 // }
-// function deepClone(target, map = new WeakMap()) {
-//   console.log('typeof target', typeof target);
-//   if (typeof target === 'object') {
-//     let cloneTarget = Array.isArray(target) ? [] : {};
-//     if (map.get(target)) return target;
-//     map.set(target, cloneTarget); // 将现有的对象存起来，为后面的校验作准备
-//     const keys = Array.isArray(target) ? undefined : Object.keys(target);
-//     forEach(keys || target, (val, index) => {
-//       if (keys) {
-//         index = val;
-//       }
-//       cloneTarget[index] = deepClone(target[index], map);
-//     });
-//     return cloneTarget;
-//   } else {
-//     return target;
-//   }
-// }
+function deepClone(target, map = new WeakMap()) {
+  console.log('typeof target', typeof target);
+  if (typeof target === 'object') {
+    let cloneTarget = Array.isArray(target) ? [] : {};
+    if (map.get(target)) return target;
+    map.set(target, cloneTarget); // 将现有的对象存起来，为后面的校验作准备
+    const keys = Array.isArray(target) ? undefined : Object.keys(target);
+    forEach(keys || target, (val, index) => {
+      if (keys) {
+        index = val;
+      }
+      cloneTarget[index] = deepClone(target[index], map);
+    });
+    return cloneTarget;
+  } else {
+    return target;
+  }
+}
 
 // const query = new Promise ((resolved) => {
 //   setTimeout(() => {
@@ -462,19 +462,132 @@
 //   console.log('this is a array');
 // }
 
-/** 时间绑定 */
-let btn = document.getElementById('btn1');
-btn.addEventListener('click', function (event) {
-  event.preventDefault(); // 阻止默认行为
-  event.stopPropagation(); // 阻止冒泡
-  console.log('event', event);
-});
+/** 事件绑定 */
+// let btn = document.getElementById('btn1');
+// btn.addEventListener('click', function (event) {
+//   event.preventDefault(); // 阻止默认行为
+//   event.stopPropagation(); // 阻止冒泡
+//   console.log('event', event);
+// });
 
 /** 图片懒加载 */
 
+/** 原型链与继承 */
 
+/** 事件循环 */
+// new Promise((resolve, reject) => {
+//   console.log('Promise1 s');
+//   resolve();
+// }).then(res => {
+//   return new Promise((resolve) => {
+//     console.log('Promise2 s');
+//     setTimeout(() => {
+//       console.log('promise setTimeout1');
+//       resolve();
+//     }, 5000);
+//   }).then(res => {
+//     return new Promise((resolve) => {
+//       console.log('Promise3 s');
+//       resolve();
+//     });
+//   });
+// });
+//
+// setTimeout(() => {
+//   console.log('setTimeout1');
+// }, 0);
 
+// function fetchData () {
+//   return (
+//     async () => {
+//       for (let n = 0; n <= 2; n += 1) {
+//         let result = await query();
+//         if (result === 'fetch error') {
+//           await sleep();
+//         } else {
+//           return result;
+//         }
+//       }
+//       return 'missions fail';
+//     }
+//   )();
+// }
+//
+// function sleep() {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve();
+//     }, 1000);
+//   });
+// }
+//
+// function query() {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve('fetch error');
+//     }, 1000);
+//   });
+// }
+//
+// fetchData().then(res => {
+//   console.log('result', res);
+// });
 
+/** 两数之和 */
+// map的key value可以接受任何类型的key和任何值的value
+// const arr = [11, 23, 43, 23, 12, 3, 3, 1, 545, 5, 32, 12, 44, 1, 0, 111];
+// function getSum(arr, targetNum) {
+//   let map = new Map();
+//   let temp;
+//   for (let n = 0; n < arr.length;n +=1) {
+//     temp = targetNum - arr[n];
+//     if (map.get(temp) === undefined) {
+//       map.set(arr[n], arr[n]);
+//     } else {
+//       return [map.get(temp), n];nbv！
+//     }
+//   }
+//   return [];
+// }
+//
+// console.log('res', getSum(arr, 4));
+
+// let set = new Set([6, 1, 2, 3, 4, 4, 10, 40]);
+// const str = 'adfadf2';
+// set.add(str);
+// console.log('set', set.values());
+//
+// set.forEach(item => {
+//   console.log('item', item);
+// });
+
+// let weakset = new WeakSet();
+// let arr = [1, 2];
+// weakset.add(arr);
+//
+// console.log('weakset', weakset.get(arr));
+// weakset.has([1, 2]);
+
+// const subsets = function(nums) {
+//   let result = [];
+//   function dfs(index,ans){
+//     let ans2 = ans.concat();
+//     ans2.push(nums[index]);
+//     if(index === 0){
+//       result.push(ans);
+//       result.push(ans2);
+//       return;
+//     }else{
+//       dfs(index-1,ans);
+//       dfs(index-1,ans2);
+//     }
+//   }
+//   dfs(nums.length-1,[]);
+//   return result;
+// };
+//
+// const arr = [1, 2, 3, 4];
+// console.log('subsets', subsets(arr));
 
 
 

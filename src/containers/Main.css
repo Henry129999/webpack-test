@@ -8,7 +8,14 @@
 }
 .test {
   height: 300px;
-  width: 300px;
+  width: 100%;
+  display: flex;
+}
+.test_left {
+  width: 200px;
+}
+.test_right {
+  flex-basis: 100%;
 }
 .animation {
   width: 40px;
