@@ -1,0 +1,16 @@
+.box {
+  background-color: aquamarine;
+  width: 100%;
+}
+.item1 {
+  width: 100px;
+  background-color: #bebebe;
+}
+.item2 {
+  width: 200px;
+  background-color: red;
+}
+.item3 {
+  width: 300px;
+  background-color: antiquewhite;
+}
