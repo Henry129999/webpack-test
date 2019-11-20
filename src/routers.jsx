@@ -1,7 +1,5 @@
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import React, { PureComponent, createElement } from 'react';
-import { createBrowserHistory as createHistory } from "history";
-// import getAsyncComponent from './help/getAsyncComponent';
 
 import Main from './containers/Main.jsx';
 import Footer from './containers/Footer.jsx';
