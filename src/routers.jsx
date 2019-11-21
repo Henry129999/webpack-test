@@ -21,8 +21,6 @@ export default function Routers() {
         });
       }
 
-
-
       render() {
         const {component} = this.state || {};
         // component 是 React.Component 类型，需要通过 React.createElement 生产一个组件实例
