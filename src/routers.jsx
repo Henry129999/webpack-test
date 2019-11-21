@@ -21,10 +21,6 @@ export default function Routers() {
         });
       }
 
-
-
-
-
       render() {
         const {component} = this.state || {};
         // some fix
