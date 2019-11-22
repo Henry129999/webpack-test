@@ -19,7 +19,7 @@ export default class Footer extends Component{
   render() {
     return (
       <div>
-        <p style={{ marginBottom: '12px' }}>334222</p>
+        <p style={{ marginBottom: '12px' }}>3 3334222</p>
         <Button type={"primary"} onClick={this.handleLinkToHome}>返回首页</Button>
       </div>
     );
